@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+  <link rel="stylesheet" href="i.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+
+  
+
+  </head>
+
+<body>
+ 
+<div class="mb-3">
+    <div class="text-left" class="d-flex p-2 bd-highlight" style="background-color: rgb(32, 80, 112);"><h1 style="color: rgb(255, 255, 255);"><p >Fake News Detector</p></h1></div>
+</div>
+
+    <form action="{{url_for('predict')}}" method="post" style="background-color:#f8f9fa;;">   
+      
+
+
+ <div class="container">
+
+
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" placeholder="Enter Title" name="title" required class="form-control" id="formGroupExampleInput">
+  </div>
+  <div class="mb-3">
+    <label for="author" class="form-label">Author</label>
+    <input type="text" placeholder="Enter Author" name="author" required class="form-control" id="formGroupExampleInput">
+  </div>
+  <div class="mb-3">
+    <label for="maintext" class="form-label">Text</label>
+    <input type="text" placeholder="Enter Whole Text" name="maintext" required class="form-control" id="formGroupExampleInput">
+  </div>
+   
+   <center><button type="submit" class="btn btn-outline-dark">Predict</button></center>
+
+
+ </div>
+
+
+</form>
+
+<div class="container">
+  <form action="{{url_for('vialink')}}" method="post">
+
+    <div class="mb-3">
+      <label for="textvialink" class="form-label">Enter Link</label>
+      <input type="text" placeholder="Enter Your Link" name="Link" required class="form-control"
+        id="formGroupExampleInput">
+    </div>
+    <center><button type="submit" class="btn btn-outline-dark">Predict</button></center>
+</div>
+  </form>
+
+
+</br>
+</br>
+
+<div id="hideDiv" >
+
+
+  {% if result == 0 %}
+  <center><div  >
+    <h3> <span class="badge bg-success">Reliable with confidence of {{ result1 }} % </span></h3>
+  </div></center>
+
+  {% elif result == 1  %}
+<center>
+<div>
+  <h3>
+    <span class="badge bg-danger">Unreliable with confidence of {{ result1 }} % </span>
+  </h3>
+
+</div>
+</center>
+ 
+  {% endif %}
+
+
+
+
+  <!-- <div class="container">
+    <h4>Polarity : {{ polarity }}</h4>
+    <h4>subjectivity : {{ subjectivity }}</h4>
+    
+   <div class="container"><h3>Your Summarized text is</h3></div> 
+    
+
+
+    <div class="container">
+       Content here -->
+      <!-- <p>{{ summerized_text }}</p>
+    </div> --> 
+<div class="mt-5">
+<div class="container " style="background-color: rgb(32, 80, 112);">
+    <div class="card border-light mb-3" >
+      <div class="card-header"><h4 style="color:  rgb(12, 158, 61);">Polarity :{{ polarity }} </h4></div>
+      <div class="card-header"><h4 style = "color: rgb(85, 129, 129);">Subjectivity : {{ subjectivity }}</h4></div>
+
+      <div class="card-body">
+        <h5 class="card-title">Summarized-Text : </h5>
+        <p class="card-text" style="background-color: rgb(204, 236, 247);">{{summerized_text}}
+        </p>
+      </div>
+    </div>
+</div>
+</div>
+  
+  
+  
+  </div>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+

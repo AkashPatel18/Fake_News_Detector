@@ -1,0 +1,2 @@
+naive = 92.5%
+logistic = 81%
